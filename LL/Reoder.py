@@ -37,9 +37,7 @@ def reorderList(head):
 # Input: 1 → 2 → 3 → 4 → 5
 
 # Middle: 3
-
 # Reversed second half: 5 → 4
-
 # Merge:
 
 # 1 → 5
@@ -55,7 +53,7 @@ def reorderList(head):
 # ⏱ Time Complexity:
 # O(n) — for finding middle, reversing, and merging
 
-# 🧠 Space Complexity:
+# Space Complexity:
 # O(1) — no extra space used
 
 def reorderList(head):

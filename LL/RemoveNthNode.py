@@ -1,13 +1,10 @@
 #  Time Complexity: O(n)
 # Reason:
-
 # Move fast pointer n steps → O(n)
-
 # Then move both fast and slow to the end → at most O(n)
 
 # → Total: O(n)
-
-# 🧠 Space Complexity: O(1)
+# Space Complexity: O(1)
 # No extra space used (just pointers)
 
 class ListNode:
