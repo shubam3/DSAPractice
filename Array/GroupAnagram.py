@@ -1,32 +1,34 @@
-def group_anagrams_brute_force(strs):
+# Time: For each pair you may sort both words ⇒ worst-case
+# O(n^2 · k log k) (n = #words, k = word length).
+# Space: O(n) for visited (ignoring sort buffers).
 
-    anagram_map = {}  # sorted words as keys and lists of anagrams as values
 
-    for word in strs:
-        sorted_word = ''.join(sorted(word))  # Sort letters to create a key
-        
-        if sorted_word not in anagram_map:
-            anagram_map[sorted_word] = []  # Initialize list if key is not present
-        
-        anagram_map[sorted_word].append(word)  # Append word to the group
+def groupAnagrams(words):
+    # Step 1: Get the number of words
+    n = len(words)
 
-    return list(anagram_map.values())  # Convert dictionary values to a list
+    # Step 2: Create a 'visited' list to track grouped words
+    visited = [False] * n  # Initially, all words are unvisited
 
-    result = []  # Stores grouped anagrams
-    visited = [False] * len(strs)  # Track visited words
+    # Step 3: This will hold the final groups of anagrams
+    result = []
 
-    for i in range(len(strs)):
-        if visited[i]:  # Skip if already grouped
-            continue
-        
-        group = [strs[i]]  # Start a new group
-        visited[i] = True
+    # Step 4: Loop through each word to form groups
+    for i in range(n):
+        if not visited[i]:
+            # Step 4a: Start a new group with the current word
+            group = [words[i]]
+            visited[i] = True  # Mark it as grouped
 
-        for j in range(i + 1, len(strs)):  # Compare with every other word
-            if sorted(strs[i]) == sorted(strs[j]):  # Check if anagram
-                group.append(strs[j])
-                visited[j] = True  # Mark as grouped
+            # Step 4b: Compare with all remaining unvisited words
+            for j in range(i + 1, n):
+                # Step 4c: If they are anagrams, group them
+                if not visited[j] and sorted(words[i]) == sorted(words[j]):
+                    group.append(words[j])
+                    visited[j] = True  # Mark this word as grouped
 
-        result.append(group)  # Add the group to final result
+            # Step 4d: Add the completed group to the result
+            result.append(group)
 
-    return result    #n2 logn
+    # Step 5: Return all anagram groups
+    return result
