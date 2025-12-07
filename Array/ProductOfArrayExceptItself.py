@@ -4,29 +4,30 @@
 class Solution:
     def productitself(self, nums: List[int]) -> List[int]:
         # n= len(nums)
-        # output = [1]*n
+        # output = [1] * n
 
         # for i in range(n):
         #     product = 1 #intialize product for the current index 
         #     for j in range(n):
         #         if i!=j:
-        #             product += nums[j] 
-        #         output[j] = product
+        #             product *= nums[j] 
+        #         output[i] = product
         # return output            
 
-        n = len(nums)
-        output = [1] * n
-        
-        # Calculate left products
-        left_product = 1
-        for i in range(n):
-            output[i] = left_product
-            left_product *= nums[i]
-        
-        # Calculate right products and finalize result
-        right_product = 1
-        for i in range(n-1, -1, -1):
-            output[i] *= right_product
-            right_product *= nums[i]
-        
-        return output
+        def productExceptSelf(nums):
+            n = len(nums)
+            res = [1] * n
+
+            # Left products
+            prefix = 1
+            for i in range(n):
+                res[i] = prefix
+                prefix *= nums[i]
+
+            # Right products
+            suffix = 1
+            for i in range(n - 1, -1, -1):
+                res[i] *= suffix
+                suffix *= nums[i]
+
+            return res
