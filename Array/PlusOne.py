@@ -4,7 +4,18 @@ def plus_one(digits):
     :param digits: List[int] -> List of digits representing the large integer
     :return: List[int] -> The list representing the integer after incrementing
     """
-    # TODO: Implement this function
+
+
+# We simulate addition from the last digit:
+
+# Start from the end.
+
+# If digit < 9 → just add 1 and return.
+
+# If digit == 9 → make it 0 and carry 1 to the left.
+
+# If all digits are 9 → add 1 at the front.
+
     n = len(digits)
     
     # Start from the least significant digit and propagate the carry
